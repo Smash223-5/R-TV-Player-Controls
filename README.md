@@ -1,16 +1,15 @@
-
 # R TV Player Controls
 
-A lightweight Chrome Extension designed to bring convenient keyboard shortcuts and playback controls to the custom web video player used in Telegram Web mini-apps (such as Chartdrama / R TV).
+A lightweight Chrome extension that adds essential keyboard shortcuts and playback controls to the custom web video player used in Telegram Web mini-apps (such as Chartdrama / R TV).
 
 ---
 
 ## Features
 
-- **Custom Keyboard Shortcuts:** Full playback, timeline, fullscreen, and episode navigation controls.
-- **Prevent Default Scrolling:** Prevents the browser from scrolling down when pressing the `Spacebar`.
-- **Built-in Console & Toggle:** A popup menu allows you to toggle the extension on/off and view live action logs/errors.
-- **Iframe & Custom Player Support:** Injects directly into embedded player frames (`mini.chartdrama.com`).
+- **Custom Keyboard Shortcuts:** Full control over playback, timeline seeking, fullscreen mode, and episode navigation.
+- **Scroll Prevention:** Prevents the page from scrolling down when pressing the `Spacebar`.
+- **Extension Toggle:** Clean popup interface to easily enable or disable shortcuts with a single click.
+- **Cross-Frame Support:** Injects directly into embedded player frames (`mini.chartdrama.com`).
 
 ---
 
@@ -34,9 +33,9 @@ A lightweight Chrome Extension designed to bring convenient keyboard shortcuts a
 Since this is a custom extension, install it directly via Chrome's Developer Mode:
 
 1. **Download / Clone** this repository to your local machine.
-2. Ensure all files (`manifest.json`, `content.js`, `popup.html`, `popup.js`, and `icon.jpg`) are in the same root folder.
+2. Ensure all files (`manifest.json`, `content.js`, `popup.html`, `popup.js`, and `icon.png`) are in the same root folder.
 3. Open Google Chrome and navigate to `chrome://extensions/`.
-4. Enable **Developer mode** in the top-right corner.
+4. Enable **Developer mode** using the toggle in the top-right corner.
 5. Click **Load unpacked** in the top-left corner.
 6. Select the folder containing the project files.
 7. Open or refresh your Telegram Web player page (`Ctrl + F5` or `Cmd + Shift + R`).
@@ -46,8 +45,8 @@ Since this is a custom extension, install it directly via Chrome's Developer Mod
 ## Extension Structure
 
 ```text
-├── manifest.json   # Chrome Extension configuration & domain matches
-├── content.js      # Main injection script handling keyboard events
-├── popup.html      # UI for the extension toolbar menu & log console
-├── popup.js        # Logic for enabling/disabling and displaying logs
-└── icon.jpg        # Extension icon
+├── manifest.json   # Extension manifest & match rules
+├── content.js      # Main script handling keyboard shortcuts
+├── popup.html      # Simple UI with an Enable/Disable toggle
+├── popup.js        # Logic for saving the toggle state
+└── icon.png        # Extension icon

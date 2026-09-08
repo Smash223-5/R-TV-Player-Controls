@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "R TV Player Controls",
+  "version": "1.0",
+  "description": "Custom keyboard shortcuts for R TV / Chartdrama video player.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mini.chartdrama.com/*",
+        "https://web.telegram.org/*"
+      ],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ window.addEventListener('keydown', (e) => {
         if (!data.isEnabled) return;
 
         const key = e.key.toLowerCase();
-        const validKeys = ['f', ' ', 'k', 'arrowright', 'arrowleft', 'l', 'j', 'n', 'b'];
+        const validKeys = ['f', 'g', 'e', ' ', 'k', 'arrowright', 'arrowleft', 'l', 'j', 'n', 'b'];
         if (!validKeys.includes(key)) return;
 
         const video = document.querySelector('video');
@@ -32,7 +32,29 @@ window.addEventListener('keydown', (e) => {
         const fsBtn = document.querySelector('.ctl-fs');
         const seekInput = document.querySelector('input.seek');
 
-        // 1. FULLSCREEN (F)
+        // 1. MINIAPP FULLSCREEN (G)
+        if (key === 'g') {
+            e.preventDefault();
+            const expandBtn = document.querySelector('.icon-expand-modal')?.closest('button') || document.querySelector('button .icon-expand-modal');
+            const collapseBtn = document.querySelector('.icon-down')?.closest('[role="button"]') || document.querySelector('[aria-label="Collapse"]');
+
+            if (collapseBtn && collapseBtn.offsetParent !== null) {
+                triggerClick(collapseBtn);
+            } else if (expandBtn && expandBtn.offsetParent !== null) {
+                triggerClick(expandBtn);
+            }
+        }
+
+        // 2. TOGGLE EPISODE LIST (E)
+        if (key === 'e') {
+            e.preventDefault();
+            const epBtn = document.querySelector('.rail-btn.ep');
+            if (epBtn) {
+                triggerClick(epBtn);
+            }
+        }
+
+        // 3. PLAYER FULLSCREEN (F)
         if (key === 'f') {
             e.preventDefault();
             if (fsBtn) {
@@ -46,7 +68,7 @@ window.addEventListener('keydown', (e) => {
             }
         }
 
-        // 2. PLAY / PAUSE (Space / K)
+        // 4. PLAY / PAUSE (Space / K)
         if (key === ' ' || key === 'k') {
             e.preventDefault();
             e.stopPropagation();
@@ -58,7 +80,7 @@ window.addEventListener('keydown', (e) => {
             }
         }
 
-        // 3. TIMELINE SEEKING (Arrow Keys, L, J)
+        // 5. TIMELINE SEEKING (Arrow Keys, L, J)
         if (['arrowright', 'arrowleft', 'l', 'j'].includes(key)) {
             e.preventDefault();
             let seconds = 0;
@@ -79,7 +101,7 @@ window.addEventListener('keydown', (e) => {
             }
         }
 
-        // 4. EPISODES (B = Previous, N = Next)
+        // 6. EPISODE SWITCHING (B = Previous, N = Next)
         if (key === 'n' || key === 'b') {
             e.preventDefault();
             const epBtn = document.querySelector('.rail-btn.ep');
